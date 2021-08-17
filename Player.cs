@@ -13,8 +13,8 @@ namespace BlackJack
         internal abstract Card CardPick();
         internal abstract void AddCard(Card card);
         internal abstract void AddCards(Card[] cards);
-
-        public int CompareTo([AllowNull] Player other)
+        
+        public int CompareTo(Player other)
         {
             if (score > other.score)
             {

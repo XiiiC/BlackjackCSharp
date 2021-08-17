@@ -1,0 +1,49 @@
+Computer has chosen their cards.
+Player has chosen their cards.
+
+
+ Player Cards: the Queen of Diamonds and the 6 of Clubs (18)
+
+
+ Computer Cards: the 8 of Diamonds and the 6 of Spades(14)
+Player gains point!
+Computer has chosen their cards.
+Player has chosen their cards.
+
+
+ Player Cards: the 5 of Diamonds and the 10 of Hearts (15)
+
+
+ Computer Cards: the King of Clubs and the Ace of Spades(27)
+Computer gains point!
+Computer has chosen their cards.
+Player has chosen their cards.
+
+
+ Player Cards: the 10 of Clubs and the 8 of Spades (18)
+
+
+ Computer Cards: the 3 of Clubs and the 4 of Diamonds(7)
+Player gains point!
+Computer has chosen their cards.
+Player has chosen their cards.
+
+
+ Player Cards: the 9 of Hearts and the 10 of Spades (19)
+
+
+ Computer Cards: the Queen of Spades and the Jack of Clubs(23)
+Computer gains point!
+Computer has chosen their cards.
+Player has chosen their cards.
+
+
+ Player Cards: the 7 of Hearts and the 8 of Clubs (15)
+
+
+ Computer Cards: the 3 of Spades and the 3 of Hearts(6)
+Player gains point!
+Player Wins!
+
+Human Score: 3
+Computer Score: 2
