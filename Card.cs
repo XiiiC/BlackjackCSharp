@@ -1,4 +1,4 @@
-namespace CardsOOP
+namespace BlackJack
 {
     public class Card
     {

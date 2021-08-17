@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace CardsOOP
+namespace BlackJack
 {
     public abstract class Player : IComparable<Player>
     {

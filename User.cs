@@ -1,8 +1,8 @@
 using System;
 
-namespace CardsOOP
+namespace BlackJack
 {
-    public class Human : Player
+    public class User : Player
     {
         internal override void AddCard(Card card)
         {
