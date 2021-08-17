@@ -1,4 +1,4 @@
-namespace BlackJack
+namespace BlackJackCSharp
 {
     public class Card
     {
@@ -46,6 +46,7 @@ namespace BlackJack
         {
             this.Value = Value;
             this.Suit = Suite;
+
         }
 
     }

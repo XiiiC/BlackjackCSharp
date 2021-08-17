@@ -1,6 +1,6 @@
 using System;
 
-namespace BlackJack
+namespace BlackJackCSharp
 {
     public class User : Player
     {

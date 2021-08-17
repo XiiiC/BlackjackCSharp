@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BlackJack
+namespace BlackJackCSharp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Deck deck = new Deck();
-            User user = new User();
-            CPU cpu = new CPU();
-            FileLog fileLog = new FileLog();
-            List<Player> playerList = new List<Player>();
-            playerList.Add(user);
-            playerList.Add(cpu);
+            
             Game game = new Game();
 
-            bool dealt = false;
+            game.SetUp();
+
+            /*bool dealt = false;
 
             Console.WriteLine("Deck is empty.");
             Console.WriteLine("Populating Deck.");
@@ -68,15 +64,15 @@ namespace BlackJack
                         Console.WriteLine("Too many cards were dealt to the players");
                         continue;
                     }
-                        catch (NotEnoughCardsDealtExcpetion)
-                        {
-                            Console.WriteLine("Not enough cards were dealt to players");
-                        }
-                        catch (NotEnoughCardsException)
-                        {
-                            Console.WriteLine("There are not enough cards in the deck to continue play");
-                        }
-                        dealt = true;
+                    catch (NotEnoughCardsDealtExcpetion)
+                    {
+                        Console.WriteLine("Not enough cards were dealt to players");
+                    }
+                    catch (NotEnoughCardsException)
+                    {
+                        Console.WriteLine("There are not enough cards in the deck to continue play");
+                    }
+                    dealt = true;
                     //Checking if the deck is empty after every card dealt
                     if (deck.IsEmpty())
                     {
@@ -88,131 +84,133 @@ namespace BlackJack
                         //Validating the input of the user, tryparsing to ensure that an intiger is entered
                         //As well as that the intiger entered is within the set boundries
                     }
-                        if (!Int32.TryParse(input, out number) || number < 1 || number > 2)
-                        {
-                            Console.Clear();
-                            Console.WriteLine("You have not enetered one of the outlined values to use the menu, please try again.");
-                        }
-                        if (number == 1)
-                        {
-                            deck.Populate();
-                            deck.Shuffle();
-                            Console.WriteLine("The deck has been repopulated and reshuffled");
-                            Console.WriteLine();
-                        }
-                        else if (number == 2)
-                        {
-                            Console.WriteLine("Bye.");
-                            break;
-                        }
-                    }
-                
-
-                else if (number == 2)
-                {
+                    if (!Int32.TryParse(input, out number) || number < 1 || number > 2)
+                    {
                         Console.Clear();
-                        try
-                        {
-                            deck.Shuffle();
-                        }
-                        catch (CardsNotShuffledException)
-                        {
-                            Console.WriteLine("The deck was not shuffled.");
-                            Console.WriteLine("Shuffle the deck again to ensure it is shuffled");
-                            continue;
-                        }
-                        Console.WriteLine("The deck has been shuffled.");
+                        Console.WriteLine("You have not enetered one of the outlined values to use the menu, please try again.");
+                    }
+                    if (number == 1)
+                    {
+                        deck.Populate();
+                        deck.Shuffle();
+                        Console.WriteLine("The deck has been repopulated and reshuffled");
                         Console.WriteLine();
                     }
-                    else if (number == 3)
-                    {
-                        int reward = 1;
-                        int round = 0;
-                        user.score = 0;
-                        cpu.score = 0;
-                        bool playerWonLast = false;
-                        Card userCard1;
-                        Card userCard2;
-                        Card cpuCard1;
-                        Card cpuCard2;
-
-                        while (round < 5)
-                        {
-                            if (playerWonLast)
-                            {
-                                userCard1 = user.CardPick();
-                                userCard2 = user.CardPick();
-                                fileLog.LogLine("Player has chosen their cards.");
-                                cpuCard1 = cpu.CardPick();
-                                cpuCard2 = cpu.CardPick();
-                                fileLog.LogLine("Computer has chosen their cards.");
-                            }
-                            else
-                            {
-                                cpuCard1 = cpu.CardPick();
-                                cpuCard2 = cpu.CardPick();
-                                fileLog.LogLine("Computer has chosen their cards.");
-                                userCard1 = user.CardPick();
-                                userCard2 = user.CardPick();
-                                fileLog.LogLine("Player has chosen their cards.");
-                            }
-
-                            int decision = game.Play(userCard1, userCard2, cpuCard1, cpuCard2);
-                            fileLog.LogLine($"\n\n Player Cards: the {userCard1.Name} and the {userCard2.Name} ({userCard1.Value + userCard2.Value})");
-                            fileLog.LogLine($"\n\n Computer Cards: the {cpuCard1.Name} and the {cpuCard2.Name}({cpuCard1.Value + cpuCard2.Value})");
-                            if (decision == 1)
-                            {
-                                user.score = user.score + reward;
-                                fileLog.LogLine("Player gains point!");
-                                Console.WriteLine("Press any key to continue...");
-                                Console.ReadLine();
-                                reward = 1;
-                                round++;
-                            }
-                            else if (decision == -1)
-                            {
-                                cpu.score = cpu.score + reward;
-                                fileLog.LogLine("Computer gains point!");
-                                Console.WriteLine("Press any key to continue...");
-                                Console.ReadLine();
-                                reward = 1;
-                                round++;
-                            }
-                            else if (decision == 0)
-                            {
-                                //draw
-                                fileLog.LogLine("Draw, move onto the next hand!");
-                                Console.WriteLine("Press any key to continue...");
-                                Console.ReadLine();
-                                reward++;
-                                round++;
-                            }
-
-                        }
-                        if (game.Winner(user, cpu, fileLog) == 0)
-                        {
-                            int x = 0;
-                            while (x == 0)
-                            {
-
-                                userCard1 = deck.Deal();
-                                cpuCard1 = deck.Deal();
-                                x = game.Stalemate(userCard1, cpuCard1, fileLog);
-                            }
-                        }
-                        dealt = false;
-                        fileLog.SaveLog();
-                        Console.WriteLine("Thank you for playing!\nIf you would like to play again, deal some cards and enjoy the game again!");
-
-                    }
-                    else if (number == 4)
+                    else if (number == 2)
                     {
                         Console.WriteLine("Bye.");
                         break;
                     }
+                }
+
+
+                else if (number == 2)
+                {
+                    Console.Clear();
+                    try
+                    {
+                        deck.Shuffle();
+                    }
+                    catch (CardsNotShuffledException)
+                    {
+                        Console.WriteLine("The deck was not shuffled.");
+                        Console.WriteLine("Shuffle the deck again to ensure it is shuffled");
+                        continue;
+                    }
+                    Console.WriteLine("The deck has been shuffled.");
+                    Console.WriteLine();
+                }
+                else if (number == 3)
+                {
+                    int reward = 1;
+                    int round = 0;
+                    user.score = 0;
+                    cpu.score = 0;
+                    bool playerWonLast = false;
+                    Card userCard1;
+                    Card userCard2;
+                    Card cpuCard1;
+                    Card cpuCard2;
+
+                    while (round < 5)
+                    {
+                        if (playerWonLast)
+                        {
+                            userCard1 = user.CardPick();
+                            userCard2 = user.CardPick();
+                            fileLog.LogLine("Player has chosen their cards.");
+                            cpuCard1 = cpu.CardPick();
+                            cpuCard2 = cpu.CardPick();
+                            fileLog.LogLine("Computer has chosen their cards.");
+                        }
+                        else
+                        {
+                            cpuCard1 = cpu.CardPick();
+                            cpuCard2 = cpu.CardPick();
+                            fileLog.LogLine("Computer has chosen their cards.");
+                            userCard1 = user.CardPick();
+                            userCard2 = user.CardPick();
+                            fileLog.LogLine("Player has chosen their cards.");
+                        }
+
+                        int decision = game.Play(userCard1, userCard2, cpuCard1, cpuCard2);
+                        fileLog.LogLine($"\n\n Player Cards: the {userCard1.Name} and the {userCard2.Name} ({userCard1.Value + userCard2.Value})");
+                        fileLog.LogLine($"\n\n Computer Cards: the {cpuCard1.Name} and the {cpuCard2.Name}({cpuCard1.Value + cpuCard2.Value})");
+                        if (decision == 1)
+                        {
+                            user.score = user.score + reward;
+                            fileLog.LogLine("Player gains point!");
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadLine();
+                            reward = 1;
+                            round++;
+                        }
+                        else if (decision == -1)
+                        {
+                            cpu.score = cpu.score + reward;
+                            fileLog.LogLine("Computer gains point!");
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadLine();
+                            reward = 1;
+                            round++;
+                        }
+                        else if (decision == 0)
+                        {
+                            //draw
+                            fileLog.LogLine("Draw, move onto the next hand!");
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadLine();
+                            reward++;
+                            round++;
+                        }
+
+                    }
+                    if (game.Winner(user, cpu, fileLog) == 0)
+                    {
+                        int x = 0;
+                        while (x == 0)
+                        {
+
+                            userCard1 = deck.Deal();
+                            cpuCard1 = deck.Deal();
+                            x = game.Stalemate(userCard1, cpuCard1, fileLog);
+                        }
+                    }
+                    dealt = false;
+                    fileLog.SaveLog();
+                    Console.WriteLine("Thank you for playing!\nIf you would like to play again, deal some cards and enjoy the game again!");
 
                 }
-                Console.ReadLine();
+                else if (number == 4)
+                {
+                    Console.WriteLine("Bye.");
+                    break;
+                }
+
             }
-        }
-}
+            Console.ReadLine();*/
+                    }
+                }
+            }
+        
+    
