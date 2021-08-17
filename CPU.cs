@@ -1,8 +1,8 @@
 using System;
 
-namespace CardsOOP
+namespace BlackJack
 {
-    public class Computer : Player
+    public class CPU : Player
     {
         internal override Card CardPick()
         {
