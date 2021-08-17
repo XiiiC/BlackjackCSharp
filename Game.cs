@@ -1,63 +1,79 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace BlackJack
+namespace BlackJackCSharp
 {
     public class Game
     {
+
+        Deck deck = new Deck();
+        User user = new User();
+        CPU cpu = new CPU();
+        FileLog fileLog = new FileLog();
+        Menu menu = new Menu();
+        
+
+
+        
         public int humanCardVal;
         public int computerCardVal;
-        int winner;
 
-        public int Play(Card hCard1, Card hCard2, Card cCard1, Card cCard2)
+        public void SetUp()
         {
+            bool dealt = false;
+            Console.WriteLine("Deck is empty.");
+            Console.WriteLine("Populating Deck.");
+            //Excecuting the populate method of the deck
+            deck.Populate();
+            Console.WriteLine("Shuffling deck.");
+            //Excecuting the shuffle method of the deck
+            deck.Shuffle();
+            //Executing the main menu, returning the chjoice value
+            while (true)
+            {
+                int menuChoice = menu.MainMenu(dealt);
 
-            humanCardVal = hCard1.Value + hCard2.Value;
-            computerCardVal = cCard1.Value + cCard2.Value;
-
-            if (humanCardVal > computerCardVal)
-            {
-                winner = 1;
+                if (menuChoice == 1)
+                {
+                        deck.Shuffle();
+                }
+                if (menuChoice == 2)
+                {
+                        Play();
+                        break;
+                }
             }
-            else if (humanCardVal < computerCardVal)
-            {
-                winner = -1;
-            }
-            else if (humanCardVal == computerCardVal)
-            {
-                winner = 0;
-            }
-            return winner;
+            
         }
-        public int Winner(Player human, Player computer, FileLog fileLog)
-        {
-            if (human.CompareTo(computer) == 1)
-            {
-                //player wins
-                fileLog.LogLine($"Player Wins!\n\nHuman Score: {human.score}\nComputer Score: {computer.score}");
-                Console.WriteLine("Press Enter to Continue...");
-                Console.ReadLine();
-                return 1;
 
-            }
-            else if (human.CompareTo(computer) == -1)
-            {
-                //computer wins
-                fileLog.LogLine($"Computer Wins!\n\nComputer Score: {computer.score}\nHuman Score: {human.score}");
-                Console.WriteLine("Press Enter to Continue...");
-                Console.ReadLine();
-                return -1;
-            }
-            else if (human.CompareTo(computer) == 0)
-            {
-                //draw
-                fileLog.LogLine("Draw! Neither player wins!");
-                fileLog.LogLine("Each player will draw one card, highest card wins!");
-                Console.WriteLine("Press Enter to Continue...");
-                Console.ReadLine();
-                //each player draws one card, largest wins
-                return 0;
-            }
+        public int Play()
+        {
+            //user recieves card, presented as the ascii visual of the card that the player has
+            var dealtCard = deck.Deal();
+            user.AddCard(dealtCard);
+
+
+
+
+            //cpu recieves card, this one is hidden to the player, presnted as the ascii art visual for a face down card
+            //user recieves second card
+            //also need like a value being presented by both players
+            //give cpu second card, this one face up
+            //ask user if they want to, hit, stand or double
+            //if the 2 cards the player has, offer a split, if split provide user with 2 hands, this will be implemented much later after groundwork
+            //if player's card value is over 21 they lose
+            //once player stands, reveal cpu hidden card and output value
+            //if cpu card value is under user's and is under 17, hit
+            //if cpu busts, player wins
+            //if either player or cpu gets BlackJack they instantly win btw
+            //when both players stand, compare values, highest value that doesnt go over 21 wins,
+            //if value is equal its a push, aka draw
+
+
+
+
+
+
             return 0;
         }
         public int Stalemate(Card hCard, Card cCard, FileLog fileLog)

@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace BlackJack
+namespace BlackJackCSharp
 {
     public class FileLog
     {
