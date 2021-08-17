@@ -1,0 +1,6 @@
+D:\Projects\.SmallProjects\BlackJackC#\BlackjackCSharp\obj\x86\Debug\BlackJackCSharp.csprojAssemblyReference.cache
+D:\Projects\.SmallProjects\BlackJackC#\BlackjackCSharp\obj\x86\Debug\BlackJackCSharp.csproj.CoreCompileInputs.cache
+D:\Projects\.SmallProjects\BlackJackC#\BlackjackCSharp\bin\Debug\ConsoleApplication.exe
+D:\Projects\.SmallProjects\BlackJackC#\BlackjackCSharp\bin\Debug\ConsoleApplication.pdb
+D:\Projects\.SmallProjects\BlackJackC#\BlackjackCSharp\obj\x86\Debug\ConsoleApplication.exe
+D:\Projects\.SmallProjects\BlackJackC#\BlackjackCSharp\obj\x86\Debug\ConsoleApplication.pdb

@@ -1,0 +1,135 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{50C27344-EEE8-44BA-9981-BC90CF616DE9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>ConsoleApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>BlackJackCSharp</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Card.cs" />
+    <Compile Include="CPU.cs" />
+    <Compile Include="Deck.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="FileLog.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Hand.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".git\COMMIT_EDITMSG" />
+    <None Include=".git\config" />
+    <None Include=".git\description" />
+    <None Include=".git\HEAD" />
+    <None Include=".git\hooks\applypatch-msg.sample" />
+    <None Include=".git\hooks\commit-msg.sample" />
+    <None Include=".git\hooks\fsmonitor-watchman.sample" />
+    <None Include=".git\hooks\post-update.sample" />
+    <None Include=".git\hooks\pre-applypatch.sample" />
+    <None Include=".git\hooks\pre-commit.sample" />
+    <None Include=".git\hooks\pre-merge-commit.sample" />
+    <None Include=".git\hooks\pre-push.sample" />
+    <None Include=".git\hooks\pre-rebase.sample" />
+    <None Include=".git\hooks\pre-receive.sample" />
+    <None Include=".git\hooks\prepare-commit-msg.sample" />
+    <None Include=".git\hooks\update.sample" />
+    <None Include=".git\index" />
+    <None Include=".git\info\exclude" />
+    <None Include=".git\logs\HEAD" />
+    <None Include=".git\logs\refs\heads\localTest" />
+    <None Include=".git\logs\refs\heads\main" />
+    <None Include=".git\logs\refs\remotes\origin\HEAD" />
+    <None Include=".git\logs\refs\remotes\origin\localTest" />
+    <None Include=".git\logs\refs\remotes\origin\main" />
+    <None Include=".git\objects\05\4e1fa58af38e17803e53a9eb6ec99bb2924a86" />
+    <None Include=".git\objects\0e\f4399386da667f00d9e441c715d7bb0da12d53" />
+    <None Include=".git\objects\16\f7aa2c217b5ce0cae6521809dc10c9d4fc6936" />
+    <None Include=".git\objects\1e\09bb721c8d4676ecb5cc70d88805df9cd8970c" />
+    <None Include=".git\objects\28\ef9a3b4396d040a506ef4985a801a8b6af1fbf" />
+    <None Include=".git\objects\29\9c234fe2dd5ea23b4c3b4823d22ec5b70a09a1" />
+    <None Include=".git\objects\2d\a425ddab23ba221f52a4bfbc34cca50e1718d6" />
+    <None Include=".git\objects\39\cbfdaeda95f4827e3a0dd5d828bf89c8958fec" />
+    <None Include=".git\objects\3a\237029ff71f8f943dcf5d37ce87d672c54de49" />
+    <None Include=".git\objects\3d\e0dc0a1b49df72f0f8fcd7d0946ff07ccadaf2" />
+    <None Include=".git\objects\43\58d975273aa1fd6b4d00fb6562f8098a4907c4" />
+    <None Include=".git\objects\46\d4fc6c8620c4c87c3df29be22a9a49f0cf7501" />
+    <None Include=".git\objects\48\691b9aa9a28e22a3e1f9e45b86407149600e96" />
+    <None Include=".git\objects\48\853a5d15d3fcbafd62f07f127980ef1ef22b3c" />
+    <None Include=".git\objects\54\315b41e3d9e09990866dec9ffb7e4763cb94ec" />
+    <None Include=".git\objects\6f\7209065a21462df07c9bbdcd921eac878a0ee8" />
+    <None Include=".git\objects\7e\857f62d37d20f7fb669add4a91248868f737ab" />
+    <None Include=".git\objects\82\127c36713213a53123b69710730a1392372c52" />
+    <None Include=".git\objects\84\646ac7f1f65d15cb6c47d8c82939438a5de72f" />
+    <None Include=".git\objects\85\dbb2b00db2a0d49de654eb8c935233e8849b87" />
+    <None Include=".git\objects\89\be5b126fc69aac34019b2cb5b36fdf8e0ecd32" />
+    <None Include=".git\objects\a5\ec7d28ed372e832af2b968f3057632b6c96376" />
+    <None Include=".git\objects\b4\2ecf1877387c73339724fc1a66ca1883d87428" />
+    <None Include=".git\objects\be\adddf5d6344ef7c5b93f34cf5aaa756fa7ad4f" />
+    <None Include=".git\objects\cb\4fcc92503664cc7734b5c15e7c74c8aa216fdf" />
+    <None Include=".git\objects\f0\7f04b0d48b8a3e30224bf1ce5dddedc395164c" />
+    <None Include=".git\objects\f8\b4888565caadc7510be75682268d6c18edd6de" />
+    <None Include=".git\objects\fb\6229340298dcd972973016f5c74cd9e017c4d1" />
+    <None Include=".git\objects\fe\03a6f73bec28cc9f26a3a21ae1bea086fc9182" />
+    <None Include=".git\objects\pack\pack-a6db3c0847e0368915e563fe3b6c2bcc5bedd188.idx" />
+    <None Include=".git\objects\pack\pack-a6db3c0847e0368915e563fe3b6c2bcc5bedd188.pack" />
+    <None Include=".git\packed-refs" />
+    <None Include=".git\refs\heads\localTest" />
+    <None Include=".git\refs\heads\main" />
+    <None Include=".git\refs\remotes\origin\HEAD" />
+    <None Include=".git\refs\remotes\origin\localTest" />
+    <None Include=".git\refs\remotes\origin\main" />
+    <None Include=".vs\BlackjackCSharp\v16\.suo" />
+    <None Include=".vs\ProjectSettings.json" />
+    <None Include=".vs\slnx.sqlite" />
+    <None Include=".vs\VSWorkspaceState.json" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".git\ms-persist.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".git\objects\info\" />
+    <Folder Include=".git\refs\tags\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>
