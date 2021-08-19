@@ -32,8 +32,7 @@ namespace BlackJackCSharp
                 Card.Suits suite = (Card.Suits)(Math.Floor((decimal)i / 13));
                 //Add 2 to value as a cards start a 2
                 int val = i % 13 + 2;
-                Cards.Add(new Card(val, suite));
-
+                Cards.Add(new Card(val, val, suite));
             }
         }
         //Shuffling this deck randomly

@@ -4,18 +4,60 @@ namespace BlackJackCSharp
 {
     public class CPU : Player
     {
-        internal override Card CardPick()
+        internal override bool CardShow()
         {
-            Random r = new Random();
-            Card card = null;
-            int choice = 0;
-            choice = r.Next(0, hand.Cards.Count);
+            int cardVal = 0;
 
-            card = hand.Cards[choice];
-            hand.Cards.RemoveAt(choice);
-
-            return card;
+            Console.WriteLine("Your Cards: ");
+            for (int i = 0; i < hand.Cards.Count; i++)
+            {
+                Console.WriteLine(i + ") " + hand.Cards[i].Name);
+            }
+            for (int j = 0; j < hand.Cards.Count; j++)
+            {
+                cardVal = cardVal + hand.Cards[j].PlayingValue;
+            }
+            Console.WriteLine("Card Value: " + cardVal);
+            if(cardVal > 21)
+            {
+                return true;
+            }
+            else
+            return false;
         }
+        public void HiddenCardShow()
+        {
+            int cardVal = 0;
+            Console.WriteLine("Dealer's Cards: ");
+            for (int i = 0; i < hand.Cards.Count; i++)
+            {
+                if (i == 0)
+                {
+
+                    Console.WriteLine(i + ")" + " ########");
+                }
+                else
+                {
+                    Console.WriteLine(i + ") " + hand.Cards[i].Name);
+                }
+            }
+            for (int j = 0; j < hand.Cards.Count; j++)
+            {
+                if (j == 0)
+                {
+
+                    continue;
+                }
+                else
+                {
+                    cardVal = cardVal + hand.Cards[j].PlayingValue;
+                }
+
+            }
+            Console.WriteLine("Card Value: " + cardVal);
+        }
+
+
         internal override void AddCards(Card[] cards)
         {
             hand.Cards.AddRange(cards);
