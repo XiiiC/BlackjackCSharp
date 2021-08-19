@@ -10,7 +10,7 @@ namespace BlackJackCSharp
         public int score;
 
         private int cardScore { get; set; }
-        internal abstract Card CardPick();
+        internal abstract bool CardShow();
         internal abstract void AddCard(Card card);
         internal abstract void AddCards(Card[] cards);
         

@@ -12,33 +12,27 @@ namespace BlackJackCSharp
         {
             hand.Cards.AddRange(cards);
         }
-        internal override Card CardPick()
+        internal override bool CardShow()
         {
-            string cardChoice;
-            int i = 0;
-            Card card = null;
-            while (card == null)
-            {
-                Console.Clear();
-                Console.WriteLine("Your Cards: ");
-                for (i = 0; i < hand.Cards.Count; i++)
-                {
-                    Console.WriteLine(i + ") " + hand.Cards[i].Name);
-                }
-                //ask which first card they wanna pick from the list
-                Console.WriteLine("Pick which card you would like to play: ");
-                cardChoice = Console.ReadLine();
-                if (int.TryParse(cardChoice, out int choice))
-                {
-                    if (choice >= 0 && choice <= hand.Cards.Count - 1)
-                    {
-                        card = hand.Cards[choice];
-                        hand.Cards.RemoveAt(choice);
-                    }
-                }
-            }
-            return card;
+            int cardVal = 0;
 
+            Console.WriteLine("Your Cards: ");
+            for (int i = 0; i < hand.Cards.Count; i++)
+            {
+                Console.WriteLine(i + ") " + hand.Cards[i].Name);
+            }
+            for(int j = 0; j<hand.Cards.Count; j++)
+            {
+                cardVal = cardVal + hand.Cards[j].PlayingValue;
+            }
+            Console.WriteLine("Card Value: " + cardVal);
+            if (cardVal > 21)
+            {
+                return true;
+            }
+            else
+                return false;
         }
+
     }
 }

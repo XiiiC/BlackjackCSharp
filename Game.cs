@@ -45,20 +45,105 @@ namespace BlackJackCSharp
             }
             
         }
-
-        public int Play()
+        public void Dealing()
         {
-            //user recieves card, presented as the ascii visual of the card that the player has
             var dealtCard = deck.Deal();
             user.AddCard(dealtCard);
+            user.CardShow();
+            dealtCard = deck.Deal();
+            cpu.AddCard(dealtCard);
+            cpu.HiddenCardShow();
+            Console.ReadLine();
+            Console.Clear();
+            dealtCard = deck.Deal();
+            user.AddCard(dealtCard);
+            user.CardShow();
+            dealtCard = deck.Deal();
+            cpu.AddCard(dealtCard);
+            cpu.HiddenCardShow();
+            Console.ReadLine();
+        }
+        public void Hit()
+        {
+            if (user.CardShow())
+            {
+                Console.Clear();
+                user.CardShow();
+                cpu.HiddenCardShow();
+                Console.WriteLine("\n Player Has Bust\n");
+            }
+            else
+            {
+                Console.Clear();
+                var dealtCard = deck.Deal();
+                user.AddCard(dealtCard);
+                user.CardShow();
+                cpu.HiddenCardShow();
+                Console.ReadLine();
+            }
+
+        }
+        public void Stand()
+        {
+            Console.Clear();
+            user.CardShow();
+            cpu.CardShow();
+        }
+        public void Double()
+        {
+            //Until "chips" introduced its basically a hit u can only do once
+            Console.Clear();
+            var dealtCard = deck.Deal();
+            user.AddCard(dealtCard);
+            user.CardShow();
+            cpu.HiddenCardShow();
+            Console.ReadLine();
+            user.CardShow();
+            cpu.CardShow();
+
+        }
+        public int Play()
+        {
+
+
+            Dealing();
+            bool standing = false;
+            bool drawn = false;
+            while (!standing)
+            {
+                int choice = menu.PlayingMenu();
+                switch (choice)
+                {
+                    case 1:
+                        Stand();
+                        standing = true;
+                        drawn = true;
+                        break;
+                    case 2:
+                        Hit();
+                        break;
+                    case 3:
+                        if (!drawn)
+                        {
+                            Double();
+                            standing = true;
+                        }
+                        break;
+                }
+            }
+
+            /// DEALER CHECKS TO DRAW
+            ///COMPARING
+            //user recieves card, presented as the ascii visual of the card that the player ##done
 
 
 
 
-            //cpu recieves card, this one is hidden to the player, presnted as the ascii art visual for a face down card
-            //user recieves second card
-            //also need like a value being presented by both players
-            //give cpu second card, this one face up
+
+            //cpu recieves card, this one is hidden to the player, presnted as the ascii art visual for a face down card##done
+            //user recieves second card##done
+            //also need like a value being presented by both players##done
+            //give cpu second card, this one face up##done
             //ask user if they want to, hit, stand or double
             //if the 2 cards the player has, offer a split, if split provide user with 2 hands, this will be implemented much later after groundwork
             //if player's card value is over 21 they lose

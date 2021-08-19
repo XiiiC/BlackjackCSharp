@@ -29,7 +29,6 @@ namespace BlackJackCSharp
                 if (number == 1)
                 {
                     Console.Clear();
-                    Title();
                     Console.WriteLine("Shuffling Deck.");
                     Console.WriteLine();
                     return number;
@@ -92,6 +91,26 @@ namespace BlackJackCSharp
             Console.WriteLine("| '--'B|| '--'L|| '--'A|| '--'C|| '--'K|| '--'J|| '--'A|| '--'C|| '--'K|");
             Console.WriteLine("`------'`------'`------'`------'`------'`------'`------'`------'`------'");
             Console.WriteLine();
+        }
+        public int PlayingMenu ()
+        {
+            bool drawn = false;
+            Console.WriteLine("1 - Stand");
+            Console.WriteLine("2 - Hit");
+            if(!drawn)
+            Console.WriteLine("3 - Double");
+
+            string input = Console.ReadLine();
+            int number;
+            //Validating the input of the user, tryparsing to ensure that an intiger is entered
+            //As well as that the intiger entered is within the set boundries
+            if (!Int32.TryParse(input, out number) || number < 1 || number > 3)
+            {
+                Console.Clear();
+                Title();
+                Console.WriteLine("You have not enetered one of the outlined values to use the menu, please try again.");
+            }
+            return number;
         }
     }
 }
