@@ -33,6 +33,15 @@ namespace BlackJackCSharp
             else
                 return false;
         }
+        internal override int CardValue()
+        {
+            int cardVal = 0;
+            for (int i = 0; i < hand.Cards.Count; i++)
+            {
+                cardVal = cardVal + hand.Cards[i].PlayingValue;
+            }
+            return cardVal;
+        }
 
     }
 }

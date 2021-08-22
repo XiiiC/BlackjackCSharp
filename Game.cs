@@ -11,13 +11,8 @@ namespace BlackJackCSharp
         CPU cpu = new CPU();
         FileLog fileLog = new FileLog();
         Menu menu = new Menu();
-        
 
-
-        
-        public int humanCardVal;
-        public int computerCardVal;
-
+        bool playerDrawn = false;
         public void SetUp()
         {
             bool dealt = false;
@@ -56,12 +51,85 @@ namespace BlackJackCSharp
             Console.ReadLine();
             Console.Clear();
             dealtCard = deck.Deal();
+            menu.Title();
             user.AddCard(dealtCard);
             user.CardShow();
             dealtCard = deck.Deal();
             cpu.AddCard(dealtCard);
             cpu.HiddenCardShow();
             Console.ReadLine();
+        }
+        public int Play()
+        {
+
+            Dealing();
+            bool standing = false;
+            int userCardVal = user.CardValue();
+            while (!standing)
+            {
+                int choice = menu.PlayingMenu();
+                switch (choice)
+                {
+                    case 1:
+                        Stand();
+                        standing = true;
+                        playerDrawn = true;
+                        break;
+                    case 2:
+                        Hit();
+                        if(userCardVal > 21)
+                        {
+                            standing = true;
+                        }
+                        break;
+                    case 3:
+                        if (!playerDrawn)
+                        {
+                            Double();
+                            standing = true;
+                        }
+                        break;
+                }
+            }
+            if (userCardVal > 21)
+            {
+                //Player Busts
+                Console.WriteLine("Player Bust");
+            }
+            else if (userCardVal <= 21)
+            {
+                Console.ReadLine();
+                DealerTurn();
+            }
+            /// DEALER CHECKS TO DRAW
+            /// 
+            ///COMPARING
+            //user recieves card, presented as the ascii visual of the card that the player ##done
+
+
+
+
+
+            //cpu recieves card, this one is hidden to the player, presnted as the ascii art visual for a face down card##done
+            //user recieves second card##done
+            //also need like a value being presented by both players##done
+            //give cpu second card, this one face up##done
+            //ask user if they want to, hit, stand or double#done
+            //if the 2 cards the player has, offer a split, if split provide user with 2 hands, this will be implemented much later after groundwork#nop
+            //if player's card value is over 21 they lose#done
+            //once player stands, reveal cpu hidden card and output value#done
+            //if cpu card value is under user's and is under 17, hit#done
+            //if cpu busts, player wins#done
+            //if either player or cpu gets BlackJack they instantly win btw
+            //when both players stand, compare values, highest value that doesnt go over 21 wins,#done
+            //if value is equal its a push, aka draw
+
+
+
+
+
+
+            return 0;
         }
         public void Hit()
         {
@@ -102,94 +170,44 @@ namespace BlackJackCSharp
             cpu.CardShow();
 
         }
-        public int Play()
+        public void DealerTurn()
         {
-
-
-            Dealing();
-            bool standing = false;
-            bool drawn = false;
-            while (!standing)
+            int cpuCardVal = cpu.CardValue();
+            int userCardVal = user.CardValue();
+            while(cpuCardVal < userCardVal && cpuCardVal < 17)
             {
-                int choice = menu.PlayingMenu();
-                switch (choice)
-                {
-                    case 1:
-                        Stand();
-                        standing = true;
-                        drawn = true;
-                        break;
-                    case 2:
-                        Hit();
-                        break;
-                    case 3:
-                        if (!drawn)
-                        {
-                            Double();
-                            standing = true;
-                        }
-                        break;
-                }
-            }
-
-            /// DEALER CHECKS TO DRAW
-            ///COMPARING
-            //user recieves card, presented as the ascii visual of the card that the player ##done
-
-
-
-
-
-            //cpu recieves card, this one is hidden to the player, presnted as the ascii art visual for a face down card##done
-            //user recieves second card##done
-            //also need like a value being presented by both players##done
-            //give cpu second card, this one face up##done
-            //ask user if they want to, hit, stand or double
-            //if the 2 cards the player has, offer a split, if split provide user with 2 hands, this will be implemented much later after groundwork
-            //if player's card value is over 21 they lose
-            //once player stands, reveal cpu hidden card and output value
-            //if cpu card value is under user's and is under 17, hit
-            //if cpu busts, player wins
-            //if either player or cpu gets BlackJack they instantly win btw
-            //when both players stand, compare values, highest value that doesnt go over 21 wins,
-            //if value is equal its a push, aka draw
-
-
-
-
-
-
-            return 0;
-        }
-        public int Stalemate(Card hCard, Card cCard, FileLog fileLog)
-        {
-            fileLog.LogLine($"The player drew {hCard.Name} ({hCard.Value})\nThe computer drew {cCard.Name} ({cCard.Value})");
-            if (hCard.Value > cCard.Value)
-            {
-                fileLog.LogLine("Player Wins!");
-                Console.WriteLine("Press Enter to Continue...");
+                //draw
+                Console.Clear();
+                var dealtCard = deck.Deal();
+                cpu.AddCard(dealtCard);
+                user.CardShow();
+                cpu.CardShow();
                 Console.ReadLine();
+                
+                cpuCardVal = cpu.CardValue();
+            }
+            if (cpuCardVal > 21)
+            {
+                //dealer bust
+                Console.WriteLine("Dealer Bust");
+            }
+            else if (cpuCardVal > userCardVal)
+            {
+                //dealer wins
+                Console.WriteLine("Dealer Wins");
+            }
+            else if (cpuCardVal < userCardVal && cpuCardVal >= 17)
+            {
                 //player wins
-
-                return 1;
+                Console.WriteLine("Player Wins");
+                //exit loop
             }
-            else if (hCard.Value < cCard.Value)
+            else if (cpuCardVal == userCardVal)
             {
-                fileLog.LogLine("Computer Wins!");
-                Console.WriteLine("Press Enter to Continue...");
-                Console.ReadLine();
-                //computer wins
-                return -1;
+                //draw
+                Console.WriteLine("Draw");
             }
-            else
-            {
-                fileLog.LogLine("Draw!");
-                fileLog.LogLine("Each player will draw one card, highest card wins!");
-                Console.WriteLine("Press Enter to Continue...");
-                Console.ReadLine();
-                //draw again
-                return 0;
-            }
+            Console.ReadLine();
         }
 
     }
