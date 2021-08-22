@@ -4,30 +4,38 @@ C# practice, command prompt game of blackjack
             Ascii art visual test of how I want it to look at the end
             //playing card output...
 
-            Console.WriteLine("DEALER'S CARDS");
-            Console.WriteLine("┌─────────┐   ┌─────────┐");
-            Console.WriteLine("│10.......│   │░░░░░░░░░│");
-            Console.WriteLine("│.........│   │░░░░░░░░░│");
-            Console.WriteLine("│.........│   │░░░░░░░░░│");
-            Console.WriteLine("│....♦....│   │░░░░░░░░░│ ");
-            Console.WriteLine("│.........│   │░░░░░░░░░│");
-            Console.WriteLine("│.........│   │░░░░░░░░░│");
-            Console.WriteLine("│.......10│   │░░░░░░░░░│");
-            Console.WriteLine("└─────────┘   └─────────┘");
-            Console.WriteLine("Value: 10");
-            Console.WriteLine();
-            Console.WriteLine("PLAYER'S CARDS");
-            Console.WriteLine("┌─────────┐   ┌─────────┐");
-            Console.WriteLine("│5........│   │A........│");
-            Console.WriteLine("│.........│   │.........│");
-            Console.WriteLine("│.........│   │.........│");
-            Console.WriteLine("│....♠....│   │....♥....│ ");
-            Console.WriteLine("│.........│   │.........│");
-            Console.WriteLine("│.........│   │.........│");
-            Console.WriteLine("│........5│   │........A│");
-            Console.WriteLine("└─────────┘   └─────────┘");
-            Console.WriteLine("Value: 6/16");
-            Console.WriteLine();
-            Console.WriteLine("What would you like to do?");
-            Console.WriteLine("1 = Hit  2 = Stand   3 = Double");
-            Console.ReadLine();
+            DEALER'S CARDS
+            ┌─────────┐   ┌─────────┐
+            │10.......│   │░░░░░░░░░│
+            │.........│   │░░░░░░░░░│
+            │.........│   │░░░░░░░░░│
+            │....♦....│   │░░░░░░░░░│
+            │.........│   │░░░░░░░░░│
+            │.........│   │░░░░░░░░░│
+            │.......10│   │░░░░░░░░░│
+            └─────────┘   └─────────┘
+            Value: 10
+            
+            PLAYER'S CARDS
+            ┌─────────┐   ┌─────────┐
+            │5........│   │A........│
+            │.........│   │.........│
+            │.........│   │.........│
+            │....♠....│   │....♥....│
+            │.........│   │.........│
+            │.........│   │.........│
+            │........5│   │........A│
+            └─────────┘   └─────────┘
+            Value: 6/16
+
+            What would you like to do?
+            1 = Hit  2 = Stand   3 = Double
+            
+
+
+            TO DO:
+            - Add win working win conditions beyond just a console output
+            - loop back to menu
+            - fix ace to be either 11 or 1 instead of just 11
+            - later if i can be arsed, implement chip system, kinda uncessary tho
+            - maybe restructure and add to s&box or unity, probably s&box tho
