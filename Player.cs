@@ -13,6 +13,7 @@ namespace BlackJackCSharp
         internal abstract bool CardShow();
         internal abstract void AddCard(Card card);
         internal abstract void AddCards(Card[] cards);
+        internal abstract int CardValue();
         
         public int CompareTo(Player other)
         {
