@@ -34,8 +34,9 @@ C# practice, command prompt game of blackjack
 
 
             TO DO:
-            - Add win working win conditions beyond just a console output
-            - loop back to menu
-            - fix ace to be either 11 or 1 instead of just 11
+            - Add win working win conditions beyond just a console output               #DONE
+            - loop back to menu                                                         #DONE
+            - fix ace to be either 11 or 1 instead of just 11                           #DONE
             - later if i can be arsed, implement chip system, kinda uncessary tho
             - maybe restructure and add to s&box or unity, probably s&box tho
+            - if im lazy to do that ig i could just do ascii art stuff like that        

@@ -9,12 +9,14 @@ namespace BlackJackCSharp
         Deck deck = new Deck();
         User user = new User();
         CPU cpu = new CPU();
-        FileLog fileLog = new FileLog();
         Menu menu = new Menu();
 
         bool playerDrawn = false;
         public void SetUp()
         {
+            Console.Clear();
+            user.ClearHand();
+            cpu.ClearHand();
             bool dealt = false;
             Console.WriteLine("Deck is empty.");
             Console.WriteLine("Populating Deck.");
@@ -59,7 +61,7 @@ namespace BlackJackCSharp
             cpu.HiddenCardShow();
             Console.ReadLine();
         }
-        public int Play()
+        public void Play()
         {
 
             Dealing();
@@ -67,6 +69,13 @@ namespace BlackJackCSharp
             int userCardVal = user.CardValue();
             while (!standing)
             {
+                userCardVal = user.CardValue();
+                if (userCardVal > 21)
+                {
+                    Console.WriteLine("Player Busts");
+                    Console.ReadLine();
+                    SetUp();
+                }
                 int choice = menu.PlayingMenu();
                 switch (choice)
                 {
@@ -77,7 +86,7 @@ namespace BlackJackCSharp
                         break;
                     case 2:
                         Hit();
-                        if(userCardVal > 21)
+                        if (userCardVal > 21)
                         {
                             standing = true;
                         }
@@ -91,16 +100,23 @@ namespace BlackJackCSharp
                         break;
                 }
             }
-            if (userCardVal > 21)
-            {
-                //Player Busts
-                Console.WriteLine("Player Bust");
-            }
-            else if (userCardVal <= 21)
+
+            if (userCardVal <= 21)
             {
                 Console.ReadLine();
                 DealerTurn();
             }
+            else
+            {
+                userCardVal = user.CardValue();
+                if(userCardVal > 21)
+                {
+                    Console.WriteLine("Play Busts");
+                    Console.ReadLine();
+                    SetUp();
+                }
+            }
+        }
             /// DEALER CHECKS TO DRAW
             /// 
             ///COMPARING
@@ -124,31 +140,15 @@ namespace BlackJackCSharp
             //when both players stand, compare values, highest value that doesnt go over 21 wins,#done
             //if value is equal its a push, aka draw
 
-
-
-
-
-
-            return 0;
-        }
+        
         public void Hit()
         {
-            if (user.CardShow())
-            {
-                Console.Clear();
-                user.CardShow();
-                cpu.HiddenCardShow();
-                Console.WriteLine("\n Player Has Bust\n");
-            }
-            else
-            {
-                Console.Clear();
-                var dealtCard = deck.Deal();
-                user.AddCard(dealtCard);
-                user.CardShow();
-                cpu.HiddenCardShow();
-                Console.ReadLine();
-            }
+            Console.Clear();
+            var dealtCard = deck.Deal();
+            user.AddCard(dealtCard);
+            user.CardShow();
+            cpu.HiddenCardShow();
+            Console.ReadLine();
 
         }
         public void Stand()
@@ -186,28 +186,36 @@ namespace BlackJackCSharp
                 
                 cpuCardVal = cpu.CardValue();
             }
+            
             if (cpuCardVal > 21)
             {
                 //dealer bust
                 Console.WriteLine("Dealer Bust");
+                Console.ReadLine();
+                SetUp();
             }
             else if (cpuCardVal > userCardVal)
             {
                 //dealer wins
                 Console.WriteLine("Dealer Wins");
+                Console.ReadLine();
+                SetUp();
             }
             else if (cpuCardVal < userCardVal && cpuCardVal >= 17)
             {
                 //player wins
                 Console.WriteLine("Player Wins");
+                Console.ReadLine();
+                SetUp();
                 //exit loop
             }
             else if (cpuCardVal == userCardVal)
             {
                 //draw
                 Console.WriteLine("Draw");
+                Console.ReadLine();
+                SetUp();
             }
-            Console.ReadLine();
         }
 
     }
